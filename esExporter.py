@@ -119,7 +119,7 @@ class EsExporter:
             print('Sorting by: {}.'.format(', '.join(self.opts.sort)))
 
         res = self.es_conn.search(**search_args)
-        self.num_results = res['hits']['total']['value']
+        self.num_results = res['hits']['total']
 
         print('Found {} results.'.format(self.num_results))
         if self.opts.debug_mode:
