@@ -1,0 +1,99 @@
+Metadata-Version: 1.2
+Name: esExporter
+Version: 7.5.1
+Summary: A CLI tool for exporting data from Elasticsearch.
+Home-page: https://github.com/AkitoZz/esExporter
+Author: AkitoZz
+Author-email: chenzg1996@gmail.com
+License: Apache 2.0
+Description: ======
+        esExporter
+        ======
+        
+        A CLI tool for exporting data from Elasticsearch into a file
+        ----------------------------------------------------------------
+        
+        Baseed on https://github.com/taraslayshchuk/es2csv developed. Command line utility, for querying Elasticsearch(7.x) in Lucene query syntax or Query DSL syntax and exporting result as documents into a file with custom fields.
+        
+        Requirements
+        ------------
+        | This tool should be used with Elasticsearch 7.x version.
+        | You also need `Python 2.7.x <https://www.python.org/downloads/>`_ and `pip <https://pip.pypa.io/en/stable/installing/>`_.
+        
+        Installation
+        ------------
+        
+        From source:
+        
+        .. code-block:: bash
+        
+            $ git clone https://github.com/AkitoZz/esExporter.git && python setup.py install
+        
+        
+        Usage
+        -----
+        .. code-block:: bash
+        
+         $ esExporter [-h] -q QUERY [-u URL] [-a AUTH] [-i INDEX [INDEX ...]] -o FILE
+                  [-f FIELDS [FIELDS ...]] [-S FIELDS [FIELDS ...]] [-d DELIMITER]
+                  [-m INTEGER] [-s INTEGER] [--verify-certs]
+                  [--ca-certs CA_CERTS] [--client-cert CLIENT_CERT]
+                  [--client-key CLIENT_KEY] [-v] [--debug] [--header-on]
+        
+         Arguments:
+          -q, --query QUERY                        Query string in Lucene syntax.               [required]
+          -o, --output-file FILE                   file location.                               [required]
+          -u, --url URL                            Elasticsearch host URL. Default is http://localhost:9200.
+          -a, --auth                               Elasticsearch basic authentication in the form of username:password.
+          -i, --index-prefixes INDEX [INDEX ...]   Index name prefix(es). Default is ['logstash-*'].
+          -f, --fields FIELDS [FIELDS ...]         List of selected fields in output. Default is ['_all'].
+          -S, --sort FIELDS [FIELDS ...]           List of <field>:<direction> pairs to sort on. Default is [].
+          -d, --delimiter DELIMITER                Delimiter to use in CSV file. Default is ",".
+          -m, --max INTEGER                        Maximum number of results to return. Default is 0.
+          -s, --scroll-size INTEGER                Scroll size for each batch of results. Default is 100.
+          --verify-certs                           Verify SSL certificates. Default is False.
+          --ca-certs CA_CERTS                      Location of CA bundle.
+          --client-cert CLIENT_CERT                Location of Client Auth cert.
+          --client-key CLIENT_KEY                  Location of Client Cert Key.
+          -v, --version                            Show version and exit.
+          --debug                                  Debug mode on.
+          -h, --help                               show this help message and exit
+          --header-on                              Export file with header
+        
+        [ `Usage Examples <https://github.com/AkitoZz/esExporter/blob/7.5.1/docs/EXAMPLES.rst>`_ | `Release Changelog <https://github.com/AkitoZz/esExporter/blob/7.5.1/docs/HISTORY.rst>`_ ]
+        
+        
+        .. :changelog:
+        
+        Release Changelog（developed based on https://github.com/taraslayshchuk/es2csv 5.5.2）
+        =================
+        
+        7.5.1 (2022-03-03)
+        ------------------
+        - Delete -D -t -k -r -e argument.
+        - Added --header-on argument for exported file with header or not.
+        - Updateing version elasticsearch to 7.x
+        
+        5.5.2 (2018-03-21)
+        ------------------
+        - Fixed encoding in field name to UTF-8. (Issue `#35 <https://github.com/taraslayshchuk/es2csv/issues/35>`_)
+        - Added --sort(-S) argument for sorting data by selected field. (Issue `#41 <https://github.com/taraslayshchuk/es2csv/issues/41>`_)
+        - Added requirement for version of python 2.7.*. (Issue `#8 <https://github.com/taraslayshchuk/es2csv/issues/8>`_, `#12 <https://github.com/taraslayshchuk/es2csv/issues/12>`_, `#20 <https://github.com/taraslayshchuk/es2csv/issues/20>`_, `#29 <https://github.com/taraslayshchuk/es2csv/issues/29>`_, `#33 <https://github.com/taraslayshchuk/es2csv/issues/33>`_ and `#38 <https://github.com/taraslayshchuk/es2csv/issues/38>`_)
+        - Update documentation with examples.
+        - Updating version elasticsearch-py to 5.5.*.
+        
+Keywords: elasticsearch export to file
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: Environment :: Console
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 2 :: Only
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Topic :: System :: Systems Administration
+Classifier: Topic :: Database
+Classifier: Topic :: Text Processing
+Classifier: Topic :: Internet
+Classifier: Topic :: Utilities
+Requires-Python: ==2.7.*
